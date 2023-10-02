@@ -5,11 +5,19 @@ function HomePage() {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-
+    console.log("yeah");
     const enteredEmail = emailInput.current.value;
     const enteredFeedback = feedBackRef.current.value;
 
-    fetch();
+    fetch("/api/feedback", {
+      method: "POST",
+      body: JSON.stringify({ email: enteredEmail, text: enteredFeedback }),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    })
+      .then((res) => res.json())
+      .then((data) => console.log(data));
   };
   return (
     <div>
