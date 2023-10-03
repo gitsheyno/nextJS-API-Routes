@@ -5,7 +5,7 @@ function HomePage() {
 
   const submitFormHandler = (e) => {
     e.preventDefault();
-    console.log("yeah");
+
     const enteredEmail = emailInput.current.value;
     const enteredFeedback = feedBackRef.current.value;
 
