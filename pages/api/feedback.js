@@ -37,7 +37,7 @@ function handler(req, res) {
 
     const data = dataExtractor(filePath);
 
-    res.status(200).json({ message: data });
+    res.status(200).json({ feedback: data });
   }
 }
 export default handler;
