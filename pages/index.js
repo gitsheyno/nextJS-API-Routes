@@ -1,5 +1,5 @@
 import { useRef, useState } from "react";
-
+import Link from "next/link";
 function HomePage() {
   const emailInput = useRef();
   const feedBackRef = useRef();
@@ -53,6 +53,8 @@ function HomePage() {
           <li key={item.id}>{item.text}</li>
         ))}
       </ul>
+      <br />
+      <Link href="/feedback">to Feedbacks</Link>
     </div>
   );
 }
