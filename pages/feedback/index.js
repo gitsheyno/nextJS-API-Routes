@@ -1,12 +1,26 @@
 import { dataExtractor, pathGenerator } from "../api/feedback";
-
+import { useState } from "react";
 const FeedbackPage = ({ data }) => {
+  const [feedback, setFeedback] = useState([]);
+  const loadFeedbackCaller = (id) => {
+    fetch(`/api/${id}`)
+      .then((res) => res.json())
+      .then((data) => setFeedback(data.feedback));
+  };
   return (
-    <ul>
-      {data.map((item) => (
-        <li key={item.id}>{item.text}</li>
-      ))}
-    </ul>
+    <>
+      {feedback && <p>{feedback.email}</p>}
+      <ul>
+        {data.map((item) => (
+          <li key={item.id}>
+            {item.text}
+            <button onClick={() => loadFeedbackCaller(item.id)}>
+              Show Details
+            </button>
+          </li>
+        ))}
+      </ul>
+    </>
   );
 };
 
